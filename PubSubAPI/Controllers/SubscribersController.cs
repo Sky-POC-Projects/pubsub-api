@@ -26,7 +26,7 @@ public class SubscribersController(PubSubService pubSubService) : ControllerBase
             {
                 Id = subscriber.Id,
                 Name = subscriber.Name,
-                SubscribedPublishers = [.. subscriber.Subscriptions.Select(feed => new PublisherRequest { Name = feed.Publisher.Name })]
+                SubscribedPublishers = [.. subscriber.Subscriptions.Select(sub => new PublisherResponse { Id = sub.Publisher.Id, Name = sub.Publisher.Name })]
             });
         }
         catch (ArgumentException ex)
@@ -50,7 +50,7 @@ public class SubscribersController(PubSubService pubSubService) : ControllerBase
             {
                 Id = subscriber.Id,
                 Name = subscriber.Name,
-                SubscribedPublishers = [.. subscriber.Subscriptions.Select(feed => new PublisherRequest { Name = feed.Publisher.Name })]
+                SubscribedPublishers = [.. subscriber.Subscriptions.Select(sub => new PublisherResponse { Id = sub.Publisher.Id, Name = sub.Publisher.Name })]
             });
         }
         catch (KeyNotFoundException)
